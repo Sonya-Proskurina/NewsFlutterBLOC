@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_t/bloc/news_bloc.dart';
 import 'package:flutter_t/data/news_repository.dart';
 
-import 'news_screen.dart';
+import 'ui/news_screen.dart';
 
 void main() {
   runApp(MyApp());
