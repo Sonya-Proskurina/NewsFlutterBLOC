@@ -22,7 +22,7 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<NewsBloc>(
-      create: (context) => NewsBloc(newsRepository: newsRepository),
+      create: (context) => NewsBloc(newsRepository),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Новости"),
