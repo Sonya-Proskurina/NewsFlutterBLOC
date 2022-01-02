@@ -12,6 +12,7 @@ class ListItemWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         margin: const EdgeInsets.only(right: 8,left: 8,bottom: 4, top: 4),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(state.loadedNews[index].title,
                 style: const TextStyle(

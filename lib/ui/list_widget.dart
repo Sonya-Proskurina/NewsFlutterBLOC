@@ -12,9 +12,8 @@ class ListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: state.loadedNews.length,
-      itemBuilder: (context, index) => Container(
-        child: ListItemWidget(state: state, index: index),
-      ),
+      itemBuilder: (context, index) =>
+          ListItemWidget(state: state, index: index),
     );
   }
 }
