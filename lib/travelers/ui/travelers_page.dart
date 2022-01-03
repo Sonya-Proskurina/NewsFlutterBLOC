@@ -20,6 +20,7 @@ class _TravelersPageState extends State<TravelersPage> {
         create: (context) => TravelersBloc(travelersRepository),
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.indigoAccent,
             title: const Text("Путешественники"),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back_rounded),
