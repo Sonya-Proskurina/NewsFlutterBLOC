@@ -1,4 +1,4 @@
-import 'package:flutter_t/models/news.dart';
+import 'package:flutter_t/news/models/news.dart';
 import 'news_provider.dart';
 
 class NewsRepository {

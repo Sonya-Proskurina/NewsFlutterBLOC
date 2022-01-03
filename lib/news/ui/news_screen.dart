@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_t/bloc/news_event.dart';
-
+import 'package:flutter_t/news/bloc/news_event.dart';
 import '../bloc/news_bloc.dart';
 import '../bloc/news_state.dart';
 import 'error_widget.dart';
 import 'list_widget.dart';
 import 'loading_widget.dart';
 
-class NewsList extends StatefulWidget {
-  const NewsList({Key? key}) : super(key: key);
+class NewsScreen extends StatefulWidget {
+  const NewsScreen({Key? key}) : super(key: key);
 
   @override
-  _NewsListState createState() => _NewsListState();
+  _NewsScreenState createState() => _NewsScreenState();
 }
 
-class _NewsListState extends State<NewsList> {
+class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
-    final NewsBloc newsBloc = BlocProvider.of<NewsBloc>(context);
+    final NewsBloc newsBloc = context.read<NewsBloc>();
     newsBloc.add(NewsLoadEvent());
 
     return BlocBuilder<NewsBloc, NewsState>(

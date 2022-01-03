@@ -1,4 +1,4 @@
-import 'package:flutter_t/models/news.dart';
+import 'package:flutter_t/news/models/news.dart';
 
 abstract class NewsState {}
 
