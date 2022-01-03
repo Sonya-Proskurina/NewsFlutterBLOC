@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_t/travelers/bloc/travelers_bloc.dart';
 import 'package:flutter_t/travelers/bloc/travelers_event.dart';
@@ -16,6 +17,30 @@ class ListTravelersWidget extends StatelessWidget {
     return SmartRefresher(
       controller: state.refreshController,
       enablePullUp: true,
+      footer: CustomFooter(
+        builder: (BuildContext context, LoadStatus? mode) {
+          Widget body ;
+          if(mode==LoadStatus.idle){
+            body =  const Text("");
+          }
+          else if(mode==LoadStatus.loading){
+            body =  const CupertinoActivityIndicator();
+          }
+          else if(mode == LoadStatus.failed){
+            body = const Text("Ошибка загрузки");
+          }
+          else if(mode == LoadStatus.canLoading){
+            body = const Text("");
+          }
+          else{
+            body = const Text("Новости кончились :)");
+          }
+          return SizedBox(
+            height: 55.0,
+            child: Center(child:body),
+          );
+      },
+      ),
       onRefresh: () {
         travelersBloc.add(TravelersLoadEvent());
       },
