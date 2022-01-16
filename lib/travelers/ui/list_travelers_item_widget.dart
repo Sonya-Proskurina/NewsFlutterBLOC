@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_t/travelers/models/travelers.dart';
+import 'package:flutter_t/travelers/models/traveler.dart';
 
 class ListTravelersItemWidget extends StatelessWidget {
   Traveler traveler;

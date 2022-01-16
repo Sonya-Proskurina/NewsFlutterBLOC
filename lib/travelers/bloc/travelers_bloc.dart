@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_t/travelers/bloc/travelers_event.dart';
 import 'package:flutter_t/travelers/bloc/travelers_state.dart';
 import 'package:flutter_t/travelers/data/travelers_repository.dart';
-import 'package:flutter_t/travelers/models/travelers.dart';
+import 'package:flutter_t/travelers/models/traveler.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class TravelersBloc extends Bloc<TravelersEvent, TravelersState> {

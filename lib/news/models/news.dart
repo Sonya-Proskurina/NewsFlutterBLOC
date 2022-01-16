@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'news.g.dart';
+
+@JsonSerializable()
 class News {
   int id;
   String title;
@@ -5,11 +9,6 @@ class News {
 
   News({required this.id, required this.title, required this.body});
 
-  factory News.fromJson(Map<String, dynamic> json) {
-    return News(
-      id: json['id'],
-      title: json['title'],
-      body: json['body'],
-    );
-  }
+  factory News.fromJson(Map<String, dynamic> json) => _$NewsFromJson(json);
+  Map<String, dynamic> toJson() => _$NewsToJson(this);
 }

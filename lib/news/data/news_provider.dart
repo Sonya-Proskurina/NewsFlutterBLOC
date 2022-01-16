@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 
 class NewsProvider {
   Future<List<News>> getNews() async {
-    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+    final response =
+        await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
 
     if (response.statusCode == 200) {
       final List<dynamic> newsJson = json.decode(response.body);

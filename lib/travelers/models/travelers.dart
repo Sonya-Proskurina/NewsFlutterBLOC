@@ -1,9 +1,11 @@
-import 'dart:convert';
+import 'package:flutter_t/travelers/models/traveler.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'travelers.g.dart';
 
-TravelersPage travelersPageFromJson(String str) => TravelersPage.fromJson(json.decode(str));
-
+@JsonSerializable()
 class TravelersPage {
   int totalPages;
+  @JsonKey(name: 'data')
   List<Traveler> travelers;
 
   TravelersPage({
@@ -11,27 +13,6 @@ class TravelersPage {
     required this.travelers,
   });
 
-  factory TravelersPage.fromJson(Map<String, dynamic> json) => TravelersPage(
-        totalPages: json['totalPages'],
-        travelers:
-            List<Traveler>.from(json['data'].map((x) => Traveler.fromJson(x))),
-      );
-}
-
-class Traveler {
-  String id;
-  String? name;
-  int? trips;
-
-  Traveler({
-    required this.id,
-    required this.name,
-    required this.trips,
-  });
-
-  factory Traveler.fromJson(Map<String, dynamic> json) => Traveler(
-        id: json['_id'],
-        name: json['name']??"No name",
-        trips: json['trips']??0,
-      );
+  factory TravelersPage.fromJson(Map<String, dynamic> json) => _$TravelersPageFromJson(json);
+  Map<String, dynamic> toJson() => _$TravelersPageToJson(this);
 }
