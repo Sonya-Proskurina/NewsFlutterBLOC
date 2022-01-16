@@ -1,7 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_t/news/models/news.dart';
-import 'news_provider.dart';
+import 'news_client.dart';
 
 class NewsRepository {
-  final NewsProvider _newsProvider = NewsProvider();
-  Future<List<News>> getAllNews() => _newsProvider.getNews();
+  static final dio = Dio();
+  final client = NewsClient(dio);
+
+  Future<List<News>> getAllNews() => client.getNews();
 }
