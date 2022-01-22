@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_t/news/bloc/news_state.dart';
+import 'package:flutter_t/feature_news/presentation/bloc/news_state.dart';
 import 'list_item_widget.dart';
 
 class ListWidget extends StatelessWidget {

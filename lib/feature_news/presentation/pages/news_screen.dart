@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_t/news/bloc/news_event.dart';
-import '../bloc/news_bloc.dart';
-import '../bloc/news_state.dart';
-import 'error_widget.dart';
-import 'list_widget.dart';
-import 'loading_widget.dart';
+import 'package:flutter_t/feature_news/presentation/bloc/news_bloc.dart';
+import 'package:flutter_t/feature_news/presentation/bloc/news_event.dart';
+import 'package:flutter_t/feature_news/presentation/bloc/news_state.dart';
+import 'widgets/error_widget.dart';
+import 'widgets/list_widget.dart';
+import 'widgets/loading_widget.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({Key? key}) : super(key: key);
