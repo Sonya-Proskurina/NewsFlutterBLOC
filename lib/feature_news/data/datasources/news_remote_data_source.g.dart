@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'news_client.dart';
+part of 'news_remote_data_source.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'news_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps
 
-class _NewsClient implements NewsClient {
-  _NewsClient(this._dio, {this.baseUrl}) {
+class _NewsRemoteDataSource implements NewsRemoteDataSource {
+  _NewsRemoteDataSource(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://jsonplaceholder.typicode.com/';
   }
 
@@ -18,18 +18,19 @@ class _NewsClient implements NewsClient {
   String? baseUrl;
 
   @override
-  Future<List<News>> getNews() async {
+  Future<List<NewsModel>> getNews() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<News>>(
-        Options(method: 'GET', headers: _headers, extra: _extra)
-            .compose(_dio.options, '/posts',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<NewsModel>>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/posts',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) => News.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => NewsModel.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

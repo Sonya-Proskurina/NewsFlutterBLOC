@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_t/news/ui/error_widget.dart';
-import 'package:flutter_t/news/ui/loading_widget.dart';
+import 'package:flutter_t/feature_news/presentation/pages/widgets/error_widget.dart';
+import 'package:flutter_t/feature_news/presentation/pages/widgets/loading_widget.dart';
 import 'package:flutter_t/travelers/bloc/travelers_bloc.dart';
 import 'package:flutter_t/travelers/bloc/travelers_event.dart';
 import 'package:flutter_t/travelers/bloc/travelers_state.dart';

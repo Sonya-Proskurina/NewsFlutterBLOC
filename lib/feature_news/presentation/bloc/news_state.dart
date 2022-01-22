@@ -1,11 +1,11 @@
-import 'package:flutter_t/news/models/news.dart';
+import 'package:flutter_t/feature_news/domain/entities/news_entities.dart';
 
 abstract class NewsState {}
 
 class NewsLoadingState extends NewsState {}
 
 class NewsLoadedState extends NewsState {
-  List<News> loadedNews;
+  List<NewsEntities> loadedNews;
   NewsLoadedState({required this.loadedNews});
 }
 
