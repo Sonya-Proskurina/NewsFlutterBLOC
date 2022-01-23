@@ -1,4 +1,3 @@
-import 'package:flutter_t/feature_travelers/domain/entities/travelers_entities.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:flutter_t/feature_travelers/data/models/travelers_model.dart';
 import 'package:dio/dio.dart';
