@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_t/core/constants/strings.dart';
 
 class ErrorListWidget extends StatelessWidget {
   const ErrorListWidget({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class ErrorListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'Ошибка! Пожалуйста, проверьте интернет соединение!',
+        ERROR_INTERNET_TEXT,
         style: TextStyle(
           fontSize: 16,
         ),
