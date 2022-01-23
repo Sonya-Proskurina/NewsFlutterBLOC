@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_t/core/error/exceptions.dart';
 import 'package:flutter_t/core/error/failures.dart';
 import 'package:flutter_t/core/platform/network_info.dart';
 import 'package:flutter_t/feature_news/data/datasources/news_remote_data_source.dart';
@@ -21,7 +20,8 @@ class NewsRepositoriesImpl extends NewsRepositories {
       try {
         final remotePerson = await newsRemoteDataSource.getNews();
         return Right(remotePerson);
-      } on ServerException {
+      } catch(e) {
+        print("!SOS!- "+e.toString());
         return Left(ServerFailure());
       }
     } else {

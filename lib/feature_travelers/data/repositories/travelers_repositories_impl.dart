@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_t/core/error/exceptions.dart';
 import 'package:flutter_t/core/error/failures.dart';
 import 'package:flutter_t/feature_travelers/data/datasources/traveler_datasours.dart';
 import 'package:flutter_t/feature_travelers/domain/entities/traveler_entities.dart';
@@ -18,7 +17,7 @@ class TravelersRepositoriesImpl extends TravelersRepository {
       return Right(travelersEntities.totalPages);
     }
     catch(e) {
-      print("AAAAA "+e.toString());
+      print("!SOS!- "+e.toString());
       return Left(ServerFailure());
     }
   }
@@ -29,7 +28,8 @@ class TravelersRepositoriesImpl extends TravelersRepository {
       final travelersEntities = await travelersDataSours.getPages(page, 10);
       return Right(TravelersModel.mapList(travelersEntities.travelers));
     }
-    on ServerException {
+    catch(e) {
+      print("!SOS!- "+e.toString());
       return Left(ServerFailure());
     }
   }
