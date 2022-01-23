@@ -18,18 +18,18 @@ class _TravelersDataSours implements TravelersDataSours {
   String? baseUrl;
 
   @override
-  Future<TravelersPage> getPages(page, size) async {
+  Future<TravelersModel> getPages(page, size) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page, r'size': size};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<TravelersPage>(
+        _setStreamType<TravelersModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/passenger',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = TravelersPage.fromJson(_result.data!);
+    final value = TravelersModel.fromJson(_result.data!);
     return value;
   }
 
