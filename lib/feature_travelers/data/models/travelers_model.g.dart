@@ -9,7 +9,7 @@ part of 'travelers_model.dart';
 TravelersModel _$TravelersModelFromJson(Map<String, dynamic> json) =>
     TravelersModel(
       totalPages: json['totalPages'] as int,
-      travelersModel: (json['data'] as List<dynamic>)
+      travelers: (json['data'] as List<dynamic>)
           .map((e) => TravelerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ TravelersModel _$TravelersModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$TravelersModelToJson(TravelersModel instance) =>
     <String, dynamic>{
       'totalPages': instance.totalPages,
-      'data': instance.travelersModel,
+      'data': instance.travelers,
     };

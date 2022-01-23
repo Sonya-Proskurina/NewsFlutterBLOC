@@ -1,30 +1,31 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_t/feature_travelers/domain/entities/traveler_entities.dart';
-import 'package:flutter_t/feature_travelers/domain/repositories/travelers_repositories.dart';
+import 'package:flutter_t/feature_travelers/domain/usecases/get_total_page.dart';
+import 'package:flutter_t/feature_travelers/domain/usecases/get_travelers.dart';
 import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_event.dart';
 import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_state.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class TravelersBloc extends Bloc<TravelersEvent, TravelersState> {
-  final TravelersRepository travelersRepository;
   final RefreshController refreshController;
+  final GetTotalPage getTotalPage;
+  final GetTravelers getTravelers;
   int currentPage = 1;
   late int totalPage;
   List<TravelerEntities> _loadedTravelersList = [];
 
-  TravelersBloc(
-      {required this.travelersRepository, required this.refreshController})
+  TravelersBloc({required this.getTotalPage, required this.getTravelers, required this.refreshController})
       : super(TravelersLoadingState()) {
     on<TravelersLoadEvent>((event, emit) async {
       emit(TravelersLoadingState());
       currentPage = 1;
 
-      final loadTotalPage = await travelersRepository.getTotalPage();
+      final loadTotalPage = await getTotalPage(GetTotalPageParams());
       loadTotalPage.fold((l) => emit(TravelersErrorState()), (r) {
         totalPage = r;
       });
 
-      final loadTravelers = await travelersRepository.getTravelers(currentPage);
+      final loadTravelers = await getTravelers(GetTravelersParams(page: currentPage));
       loadTravelers.fold((l) => emit(TravelersErrorState()), (r) {
         _loadedTravelersList = r;
       });
@@ -47,9 +48,9 @@ class TravelersBloc extends Bloc<TravelersEvent, TravelersState> {
             refreshController: refreshController));
       } else {
           currentPage++;
-          final loadTravelers = await travelersRepository.getTravelers(currentPage);
+          final loadTravelers = await getTravelers(GetTravelersParams(page: currentPage));
           loadTravelers.fold((l) => emit(TravelersErrorState()), (r) {
-            _loadedTravelersList = r;
+            _loadedTravelersList.addAll(r);
           });
 
           if (state!=TravelersErrorState()) {

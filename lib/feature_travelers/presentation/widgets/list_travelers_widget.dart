@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_t/travelers/bloc/travelers_bloc.dart';
-import 'package:flutter_t/travelers/bloc/travelers_event.dart';
-import 'package:flutter_t/travelers/bloc/travelers_state.dart';
-import 'package:flutter_t/travelers/ui/list_travelers_item_widget.dart';
+import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_bloc.dart';
+import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_event.dart';
+import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_state.dart';
+import 'package:flutter_t/feature_travelers/presentation/widgets/list_travelers_item_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
 
 class ListTravelersWidget extends StatelessWidget {
   TravelersLoadedState state;

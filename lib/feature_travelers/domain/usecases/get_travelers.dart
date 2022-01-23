@@ -14,7 +14,6 @@ class GetTravelers extends UseCase<List<TravelerEntities>,GetTravelersParams> {
   Future<Either<Failure, List<TravelerEntities>>> call(GetTravelersParams params) {
     return travelersRepository.getTravelers(params.page);
   }
-
 }
 
 class GetTravelersParams extends MainParams {
