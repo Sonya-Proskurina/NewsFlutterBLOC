@@ -6,7 +6,6 @@ import 'package:flutter_t/feature_news/data/repositories/news_repositories_impl.
 import 'package:flutter_t/feature_news/domain/repositories/news_repositories.dart';
 import 'package:flutter_t/feature_news/domain/usecases/get_all_news.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-
 import 'feature_news/presentation/pages/news_page.dart';
 
 // flutter pub run build_runner build
