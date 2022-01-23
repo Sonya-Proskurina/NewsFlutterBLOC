@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_t/travelers/models/traveler.dart';
+import 'package:flutter_t/feature_travelers/domain/entities/traveler_entities.dart';
 
 class ListTravelersItemWidget extends StatelessWidget {
-  Traveler traveler;
+  TravelerEntities traveler;
   ListTravelersItemWidget({Key? key, required this.traveler}) : super(key: key);
 
   @override
