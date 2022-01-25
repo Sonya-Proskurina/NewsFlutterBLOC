@@ -8,7 +8,7 @@ import 'package:flutter_t/feature_news/domain/repositories/news_repositories.dar
 class GetAllNews extends UseCase<List<NewsEntities>, GetAllNewsParams> {
   final NewsRepositories newsRepositories;
 
-  GetAllNews(this.newsRepositories);
+  GetAllNews({required this.newsRepositories});
 
   @override
   Future<Either<Failure, List<NewsEntities>>> call(GetAllNewsParams params) async {
