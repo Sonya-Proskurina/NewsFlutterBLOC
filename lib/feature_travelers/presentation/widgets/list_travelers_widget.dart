@@ -1,22 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_t/feature_travelers/domain/entities/traveler_entities.dart';
 import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_bloc.dart';
 import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_event.dart';
-import 'package:flutter_t/feature_travelers/presentation/bloc/travelers_state.dart';
 import 'package:flutter_t/feature_travelers/presentation/widgets/list_travelers_item_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 
 class ListTravelersWidget extends StatelessWidget {
-  TravelersLoadedState state;
-  TravelersBloc travelersBloc;
+  RefreshController refreshController;
+  List<TravelerEntities> list;
 
-  ListTravelersWidget({Key? key, required this.state, required this.travelersBloc}) : super(key: key);
+  ListTravelersWidget({Key? key, required this.refreshController, required this.list}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SmartRefresher(
-      controller: state.refreshController,
+      controller: refreshController,
       enablePullUp: true,
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
@@ -43,18 +44,18 @@ class ListTravelersWidget extends StatelessWidget {
       },
       ),
       onRefresh: () {
-        travelersBloc.add(TravelersLoadEvent());
+        BlocProvider.of<TravelersBloc>(context).add(TravelersLoadEvent());
       },
       onLoading: () {
-        travelersBloc.add(TravelersLoadingEvent());
+        BlocProvider.of<TravelersBloc>(context).add(TravelersLoadingEvent());
       },
       child: ListView.separated(
         itemBuilder: (context, index) {
-          final traveler = state.loadedTraveler[index];
+          final traveler = list[index];
           return ListTravelersItemWidget(traveler: traveler);
         },
         separatorBuilder: (context, index) => Divider(),
-        itemCount: state.loadedTraveler.length,
+        itemCount: list.length,
       ),
     );
   }

@@ -24,7 +24,7 @@ class _TravelersScreenState extends State<TravelersScreen> {
       if (state is TravelersLoadingState) {
         return const LoadingWidget();
       } else if (state is TravelersLoadedState) {
-        return ListTravelersWidget(state: state, travelersBloc: travelersBloc);
+        return ListTravelersWidget(refreshController: state.refreshController, list: state.loadedTraveler,);
       } else {
         return const ErrorListWidget();
       }
